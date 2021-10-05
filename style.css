@@ -1,0 +1,92 @@
+body{
+    margin: 0;
+    background: rgb(116, 240, 223);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+form, #lista{
+    box-sizing: border-box;
+    background: whitesmoke;
+    width: min(100% ,max(50%,50rem));
+    margin-inline: auto;
+    padding: 1em;
+}
+form, form > div, form input{
+    text-align: center;
+}
+form{
+    display: grid;
+    grid-template-columns:1fr;
+    gap:1em;
+}
+form > div{
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 1em;
+}
+form input{
+    width: 20rem;
+    border-radius: .2rem;
+    font-size: 1rem;
+    line-height: 1.8em;
+    margin-inline: auto;
+}
+label{
+    font-size: 2em;
+    padding-block-end: 1rem;
+}
+
+#gomb_Hozzaad{
+    font-size: 1.2rem;
+    margin:auto;
+    background: rgb(7, 122, 126);
+    color: white;
+    font-weight: bold;
+    padding-block:.3em;
+    padding-inline:1em;
+}
+#gomb_Hozzaad:hover{
+    background: rgb(11, 224, 231);
+    color: black;
+}
+h1{
+    text-align: center;
+    padding-block: .6em;
+    background: whitesmoke;
+}
+#lista{
+    text-align: center;
+    font-size: 1.2rem;
+}
+#lista > div{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(20rem,1fr));
+    gap: .5em;
+}
+.cim{
+    background: rgb(0, 163, 212);
+    color: white;
+    font-size: 1.2em;
+    text-transform: capitalize;
+    padding-block:.2em;
+}
+.cim:hover{
+    color:rgb(255, 207, 95);
+}
+.rendezo, .kiadas{
+    border-inline: 2px solid rgb(0, 94, 122);
+}
+.kiadas{
+    border-block-end: 2px solid rgb(0, 94, 122);
+}
+.rendezo:hover, .kiadas:hover{
+    color:indianred;
+}
+
+@media screen and (max-width: 44.575rem) {
+    form input{
+        width: 80%;
+    }
+    #gomb_Hozzaad{
+        font-size: 2rem;
+    }
+}

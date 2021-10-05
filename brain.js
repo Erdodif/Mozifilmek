@@ -58,13 +58,13 @@ function filmHozzaAd(){
 function kartyasit(film,id){
     return `
     <div class="kartya" id="${id}">
-        <div class="cim">
+        <div class="cim" title="Rendezés cím szerint">
             ${film.getNev()}
         </div>
-        <div class="rendezo">
+        <div class="rendezo" title="Rendezés rendező szerint">
             Rendező: ${film.getRendezo()}
         </div>
-        <div class="kiadas">  
+        <div class="kiadas" title="Rendezés kiadás éve szerint">  
             Kiadás éve: ${film.getKiadasEv()}
         </div>
     </div>\n`
@@ -74,7 +74,7 @@ function rendez(tulajdonsag){
     console.log(`Rendezés: ${tulajdonsag}`)
     for(let i = filmTomb.length-1; i > -1; i--){
         for(let j = 0; j < i; j++){
-            let nagyobb = (tulajdonsag === "filmNev" && (filmTomb[j].getNev().toLowerCase() < filmTomb[j+1].getNev().toLowerCase()))
+            let nagyobb = (tulajdonsag === "filmNev" && (filmTomb[j].getNev().toLowerCase() > filmTomb[j+1].getNev().toLowerCase()))
             nagyobb = nagyobb || (tulajdonsag === "filmRendezo" && filmTomb[j].getRendezo().toLowerCase() > filmTomb[j+1].getRendezo().toLowerCase())
             nagyobb = nagyobb || (tulajdonsag === "filmKiadasEv" && filmTomb[j].getKiadasEv() < filmTomb[j+1].getKiadasEv())
             if (nagyobb){
@@ -89,11 +89,16 @@ function rendez(tulajdonsag){
 
 function kilistaz(){
     let lista = document.getElementById("lista")
-    let kiad = "<div class='cim'>Filmek</div>"
+    let kiad = "<h1>Filmek</h1><div>"
     for(let i = 0; i < filmTomb.length; i++){
         kiad += kartyasit(filmTomb[i],`film_${i}`) 
     }
+    kiad += "</div>"
+    if (filmTomb.length < 1){
+        kiad += "<p>Nincsenek filmek a listában 🙄</p>"
+    }
     lista.innerHTML = kiad
+    
     gombFelruhaz()
 }
 
